@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+input {
+    height: 45px;
+    font-size: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 0.5px solid #000;
+    padding-left: 10px;
+}
+
+input::placeholder{
+    padding: 5px;
+    font-size: 14px;
+}
+
+input:focus {
+    border-radius: 8px;
+    border: 0.5px solid #000 !important; 
+    overflow: hidden;
+}
+
+.botaoAdicionarItem {
+    height: 40px;
+    width: 90px;
+    margin-left: 10px;
+    background-color: #e5fec5;
+    border: 1px solid #000;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+}
+.botaoAdicionarItem:hover {
+    background-color: #acbf92;
+    border: 1px solid #000;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.lista {
+    list-style: none;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.item {
+    background-color: #e5fec5;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 0px 10px 10px 10px;
+    border: 0.3px solid #000;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item .excluirItem {
+    height: 25px;
+    width: 30px;
+    background-color: #e5fec5;
+    border: 0.2px solid #000;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.item .excluirItem:hover {
+    background-color: #acbf92;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+.link, h2 {
+    font-size: 14px;
+    text-decoration: none;
+    color: #3b4331;
+    margin-bottom: 10px;
+}
