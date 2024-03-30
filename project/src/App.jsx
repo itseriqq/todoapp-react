@@ -27,6 +27,7 @@ function App() {
   }
 
   return (
+    <Container>
     <div className="container">
       <h1>To-do App</h1>
       <a className="link" href="http://itseriqq.github.io/portfolio" rel="noreferrer" target="_blank"><h2>Erick.dev</h2></a>
@@ -44,6 +45,7 @@ function App() {
     </ul>
     
     </div>
+    </Container>
   );
 }
 
