@@ -85,18 +85,44 @@ input:focus {
     justify-content: space-between;
 }
 
+.concluido {
+    text-decoration: line-through red;
+
+}
+
 .item .botoesTask {
     padding-right: 5px;
     display: flex;
     gap: 5px;
 }
 
-.item .excluirItem, .editarItem, .concluirItem {
+.item .excluirItem {
+    height: 25px;
+    width: 30px;
+    background-color: #d41010e3;
+    color: #fff;
+    border: 0.2px solid #000;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.item .editarItem {
     height: 25px;
     width: 30px;
     background-color: #e5fec5;
     border: 0.2px solid #000;
     border-radius: 6px;
+    cursor: pointer;
+}
+
+.item .concluirItem {
+    height: 25px;
+    width: 30px;
+    background-color: #1ac130;
+    border: 0.2px solid #000;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 600;
     cursor: pointer;
 }
 

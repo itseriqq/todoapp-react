@@ -10,7 +10,7 @@ import { BiCheck } from 'react-icons/bi';
 
 
 function App() {
-  const [itemList, setItemList] = useState([]);
+  const [itemList, setItemList] = useState( JSON.parse(localStorage.getItem("itemList")) || []);
   const [inputText, setInputText] = useState("");
   const [editedItem, setEditedItem] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -28,18 +28,21 @@ function App() {
 
     setItemList([...itemList, newItem]);
     setInputText("");
+    localStorage.setItem("itemList", JSON.stringify([...itemList, newItem]));
   }
 
   function handleExcluirItem(item) {
-    setItemList((prevList) => prevList.filter((lista) => lista !== item));
+    const updatedList = itemList.filter((lista) => lista !== item);
+    setItemList(updatedList);
+    localStorage.setItem("itemList", JSON.stringify(updatedList));
   }
 
   function handleConcluirItem(id) {
-    setItemList((prevItemList) =>
-      prevItemList.map((item) =>
-        item.id === id ? { ...item, completed: !item.completed } : item
-      )
+    const updatedList = itemList.map((item) =>
+      item.id === id ? { ...item, completed: !item.completed } : item
     );
+    setItemList(updatedList);
+    localStorage.setItem("itemList", JSON.stringify(updatedList));
   }
 
   const handleEditarItem = (item) => {
@@ -55,6 +58,7 @@ function App() {
     setIsEditing(false);
     setInputText("");
     setEditedItem(null);
+    localStorage.setItem("itemList", JSON.stringify(updatedList));
   };
 
   return (
@@ -85,7 +89,7 @@ function App() {
           </Col>
           <Col xs={6} sm={4} md={4} lg={4}>
             <div className="pe-0 pe-4">
-              <button className="botaoAdicionarItem" onClick={isEditing ? handleUpdateItem : handleAdicionaItem}>{isEditing ? "Atualizar" : "Adicionar"}</button>
+              <button className="botaoAdicionarItem" onClick={isEditing ? handleUpdateItem : handleAdicionaItem}>{isEditing ? "Ok" : "Add"}</button>
             </div>
           </Col>
         </Row>
@@ -97,7 +101,7 @@ function App() {
                 {itemList.map((item) => (
                   <Row>
                     <Col xs={12} className="pe-4 ps-4">
-                      <li className="item" key={item.id}>
+                      <li className={`item ${item.completed ? 'concluido' : ''}`} key={item.id}>
                         {item.itemList}
                         <div className="botoesTask">
                           <button className="concluirItem" onClick={() => handleConcluirItem(item.id)}>
@@ -111,7 +115,7 @@ function App() {
                           <button className="excluirItem" onClick={() => handleExcluirItem(item)}>
                             <BiTrash />
                           </button>
-                          
+
                         </div>
                       </li>
                     </Col>
