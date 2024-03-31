@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { v4 as uuidv4 } from "uuid";
-import { BiTrash } from 'react-icons/bi';
+import { BiX } from 'react-icons/bi';
 import { BiPencil } from 'react-icons/bi';
 import { BiCheck } from 'react-icons/bi';
 
@@ -113,7 +113,7 @@ function App() {
                           </button>
 
                           <button className="excluirItem" onClick={() => handleExcluirItem(item)}>
-                            <BiTrash />
+                            <BiX />
                           </button>
 
                         </div>

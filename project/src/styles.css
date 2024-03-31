@@ -62,8 +62,8 @@ input:focus {
 }
 
 .botaoAdicionarItem:hover {
-    background-color: #0a5e15;
-    border: 1px solid #000;
+    background-color: transparent;
+    border: 1px solid #14a827;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
@@ -77,6 +77,9 @@ input:focus {
 }
 
 .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #e5fec5;
     padding: 10px;
     border-radius: 0px 10px 10px 10px;
@@ -100,17 +103,25 @@ input:focus {
 }
 
 .item .excluirItem {
-    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
     width: 30px;
     background-color: #d41010e3;
     color: #fff;
     border: 0.2px solid #d41010e3;
     border-radius: 6px;
+    font-size: 18px;
+    padding-top: -66px;
     cursor: pointer;
 }
 
 .item .editarItem {
-    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
     width: 30px;
     background-color: #c89666;
     color: white;
@@ -120,7 +131,10 @@ input:focus {
 }
 
 .item .concluirItem {
-    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
     width: 30px;
     background-color: #14a827;
     border: 0.2px solid #14a827;
