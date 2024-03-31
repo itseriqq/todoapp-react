@@ -11,12 +11,11 @@
 }
 
 body {
-    height: 100vh;
+    margin-top: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #c89666;
-    border: 1px solid #e5fec5;
 }
 
 .forms {

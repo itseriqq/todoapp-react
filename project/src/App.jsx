@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 
 function App() {
   const [itemList, setItemList] = useState([]);
+  const [input, setInput] = useState("");
   const [inputText, setInputText] = useState("");
 
   function handleAdicionaItem() {
