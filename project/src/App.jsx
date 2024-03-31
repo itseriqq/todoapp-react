@@ -31,6 +31,7 @@ function App() {
     <div className="container">
       <h1>To-do App</h1>
       <a className="link" href="http://itseriqq.github.io/portfolio" rel="noreferrer" target="_blank"><h2>Erick.dev</h2></a>
+    </div>
       <div>
       <Row>
       <Col xs={4} md={4} lg={4}>
@@ -41,7 +42,7 @@ function App() {
       </Col>
       </Row>
     </div>
-
+    <div className="container">
     <ul className="lista">
       {itemList.map((item) =>(
         <li className="item" key={item.id}>
@@ -49,7 +50,6 @@ function App() {
 
       ))}
     </ul>
-    
     </div>
     </Container>
   );
