@@ -1,8 +1,13 @@
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+}
+
+.col-3 {
+    padding: 0 15px 0 3px;
 }
 
 body {
@@ -13,22 +18,18 @@ body {
     background-color: aquamarine;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 500px;
+.forms {
+    width: 400px;
     background-color: #fff;
-    padding: 15px;
     border-radius: 8px;
 }
 
-input {
+input, .tarefa {
     height: 45px;
-    width: 180px;
+    width: 160px;
+    margin-left: 0 !important;
     font-size: 16px;
     border-radius: 8px;
-    overflow: hidden;
     border: 0.5px solid #000;
     padding-left: 10px;
 }
@@ -45,7 +46,7 @@ input:focus {
 }
 
 .botaoAdicionarItem {
-    height: 40px;
+    height: 45px;
     width: 80px;
     margin-left: 10px;
     background-color: #e5fec5;
@@ -55,6 +56,7 @@ input:focus {
     font-size: 14px;
     font-weight: 400;
 }
+
 .botaoAdicionarItem:hover {
     background-color: #acbf92;
     border: 1px solid #000;
@@ -66,17 +68,17 @@ input:focus {
 
 .lista {
     list-style: none;
-    width: 100%;
     margin-top: 10px;
+    padding-left: 0px !important;
 }
 
 .item {
     background-color: #e5fec5;
-    margin: 5px;
     padding: 10px;
     border-radius: 0px 10px 10px 10px;
     border: 0.3px solid #000;
     display: flex;
+    margin-top: 10px;
     justify-content: space-between;
 }
 
