@@ -19,14 +19,12 @@ body {
 }
 
 .forms {
-    width: 400px;
     background-color: #fff;
     border-radius: 8px;
 }
 
 input, .tarefa {
     height: 45px;
-    width: 160px;
     margin-left: 0 !important;
     font-size: 16px;
     border-radius: 8px;
@@ -47,7 +45,7 @@ input:focus {
 
 .botaoAdicionarItem {
     height: 45px;
-    width: 80px;
+    width: 100%;
     margin-left: 10px;
     background-color: #e5fec5;
     border: 1px solid #000;
@@ -106,4 +104,19 @@ h1 {
     text-decoration: none;
     color: #3b4331;
     margin-bottom: 10px;
+}
+
+
+@media (max-width: 300px) {
+    input{
+       padding-bottom: 15px;
+       padding-left: 0 !important;
+       text-align: center;
+    }
+    input::placeholder {
+    /* Definindo quebra de texto */
+    font-size: 12px;
+    white-space: normal;
+    line-height: 1.2; /* Ajustando a altura da linha */
+  }
 }
