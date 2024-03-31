@@ -52,16 +52,17 @@ input:focus {
     height: 45px;
     width: 100%;
     margin-left: 10px;
-    background-color: #e5fec5;
+    background-color: #1ac130;
+    color: white;
     border: 1px solid #000;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .botaoAdicionarItem:hover {
-    background-color: #acbf92;
+    background-color: #0a5e15;
     border: 1px solid #000;
     border-radius: 8px;
     cursor: pointer;
@@ -86,8 +87,10 @@ input:focus {
 }
 
 .concluido {
-    text-decoration: line-through red;
-
+    text-decoration: line-through #1ac130;
+    -webkit-text-decoration-color: #1ac130; 
+    text-decoration-color: #1ac130;
+    text-decoration-thickness: 4px;
 }
 
 .item .botoesTask {
