@@ -54,7 +54,7 @@ input:focus {
     margin-left: 10px;
     background-color: #14a827;
     color: white;
-    border: 1px solid #000;
+    border: 1px solid #14a827;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
@@ -67,7 +67,7 @@ input:focus {
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .lista {
