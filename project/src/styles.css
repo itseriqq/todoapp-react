@@ -52,7 +52,7 @@ input:focus {
     height: 45px;
     width: 100%;
     margin-left: 10px;
-    background-color: #1ac130;
+    background-color: #14a827;
     color: white;
     border: 1px solid #000;
     border-radius: 8px;
@@ -87,9 +87,9 @@ input:focus {
 }
 
 .concluido {
-    text-decoration: line-through #1ac130;
-    -webkit-text-decoration-color: #1ac130; 
-    text-decoration-color: #1ac130;
+    text-decoration: line-through #098e21;
+    -webkit-text-decoration-color: #098e21; 
+    text-decoration-color: #098e21;
     text-decoration-thickness: 4px;
 }
 
@@ -104,7 +104,7 @@ input:focus {
     width: 30px;
     background-color: #d41010e3;
     color: #fff;
-    border: 0.2px solid #000;
+    border: 0.2px solid #d41010e3;
     border-radius: 6px;
     cursor: pointer;
 }
@@ -112,8 +112,9 @@ input:focus {
 .item .editarItem {
     height: 25px;
     width: 30px;
-    background-color: #e5fec5;
-    border: 0.2px solid #000;
+    background-color: #c89666;
+    color: white;
+    border: 0.2px solid #c89666;
     border-radius: 6px;
     cursor: pointer;
 }
@@ -121,16 +122,29 @@ input:focus {
 .item .concluirItem {
     height: 25px;
     width: 30px;
-    background-color: #1ac130;
-    border: 0.2px solid #000;
+    background-color: #14a827;
+    border: 0.2px solid #14a827;
     border-radius: 6px;
     color: #fff;
     font-weight: 600;
     cursor: pointer;
 }
 
-.item .excluirItem:hover, .editarItem:hover, .concluirItem:hover {
-    background-color: #acbf92;
+.item .excluirItem:hover {
+    background-color: transparent;
+    color: black;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.item .editarItem:hover {
+    background-color: transparent;
+    color: black;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.item .concluirItem:hover {
+    background-color: transparent;
+    color: #000;
     border-radius: 6px;
     cursor: pointer;
 }
