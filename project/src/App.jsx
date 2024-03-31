@@ -32,8 +32,14 @@ function App() {
       <h1>To-do App</h1>
       <a className="link" href="http://itseriqq.github.io/portfolio" rel="noreferrer" target="_blank"><h2>Erick.dev</h2></a>
       <div>
+      <Row>
+      <Col xs={8}>
       <input type="text" placeholder="Qual sua tarefa?" value={inputText} onChange={(e) => setInputText(e.target.value)}/>
+      </Col>
+      <Col xs={4}>
       <button className="botaoAdicionarItem" onClick={handleAdicionaItem}>Add</button>
+      </Col>
+      </Row>
     </div>
 
     <ul className="lista">
