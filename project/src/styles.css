@@ -19,7 +19,7 @@ body {
     align-items: center;
     width: 500px;
     background-color: #fff;
-    padding: 30px;
+    padding: 15px;
     border-radius: 8px;
 }
 
@@ -45,7 +45,7 @@ input:focus {
 
 .botaoAdicionarItem {
     height: 40px;
-    width: 90px;
+    width: 80px;
     margin-left: 10px;
     background-color: #e5fec5;
     border: 1px solid #000;
