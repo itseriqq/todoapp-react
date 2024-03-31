@@ -12,8 +12,8 @@ import { BiCheck } from 'react-icons/bi';
 function App() {
   const [itemList, setItemList] = useState([]);
   const [inputText, setInputText] = useState("");
-  const [editedItem, setEditedItem] = useState(null); 
-  const [isEditing, setIsEditing] = useState(false); 
+  const [editedItem, setEditedItem] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   function handleAdicionaItem() {
     const textoSemEspacos = inputText.trim()
@@ -54,7 +54,7 @@ function App() {
     setItemList(updatedList);
     setIsEditing(false);
     setInputText("");
-    setEditedItem(null); 
+    setEditedItem(null);
   };
 
   return (
@@ -100,15 +100,18 @@ function App() {
                       <li className="item" key={item.id}>
                         {item.itemList}
                         <div className="botoesTask">
-                          <button className="editarItem" onClick={() => handleEditarItem(item)}>
-                            <BiPencil />
-                          </button>
                           <button className="concluirItem" onClick={() => handleConcluirItem(item.id)}>
                             <BiCheck />
                           </button>
+
+                          <button className="editarItem" onClick={() => handleEditarItem(item)}>
+                            <BiPencil />
+                          </button>
+
                           <button className="excluirItem" onClick={() => handleExcluirItem(item)}>
                             <BiTrash />
                           </button>
+                          
                         </div>
                       </li>
                     </Col>
