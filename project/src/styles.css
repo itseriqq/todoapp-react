@@ -15,11 +15,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aquamarine;
+    background-color: #c89666;
+    border: 1px solid #e5fec5;
 }
 
 .forms {
-    background-color: #fff;
+    background-color: #12343b;
     border-radius: 8px;
 }
 
@@ -28,19 +29,24 @@ input, .tarefa {
     margin-left: 0 !important;
     font-size: 16px;
     border-radius: 8px;
-    border: 0.5px solid #000;
+    border: 0.5px solid #e5fec5;
     padding-left: 10px;
+    color: white;
+    background-color: transparent;
 }
 
 input::placeholder{
     padding: 5px;
     font-size: 14px;
+    color: #ffffffab;
 }
 
 input:focus {
     border-radius: 8px;
-    border: 0.5px solid #000 !important; 
+    border: 0.5px solid #e5fec5 !important; 
     overflow: hidden;
+    color: white;
+    outline: none;
 }
 
 .botaoAdicionarItem {
@@ -97,12 +103,13 @@ input:focus {
 
 h1 {
     font-size: 20px;
+    color: #fff;
 }
 
 .link, h2 {
     font-size: 14px;
     text-decoration: none;
-    color: #3b4331;
+    color: #fff;
     margin-bottom: 10px;
 }
 
