@@ -101,8 +101,13 @@ function App() {
                 {itemList.map((item) => (
                   <Row>
                     <Col xs={12} className="pe-4 ps-4">
+                      
+                      
                       <li className={`item ${item.completed ? 'concluido' : ''}`} key={item.id}>
+                        <div className="texto">
                         {item.itemList}
+                        </div>
+                        
                         <div className="botoesTask">
                           <button className="concluirItem" onClick={() => handleConcluirItem(item.id)}>
                             <BiCheck />
@@ -115,7 +120,6 @@ function App() {
                           <button className="excluirItem" onClick={() => handleExcluirItem(item)}>
                             <BiX />
                           </button>
-
                         </div>
                       </li>
                     </Col>

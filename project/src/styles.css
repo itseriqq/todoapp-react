@@ -86,7 +86,15 @@ input:focus {
     border: 0.3px solid #000;
     display: flex;
     margin-top: 10px;
+    padding-right: 10px;
     justify-content: space-between;
+    line-height: auto;
+}
+
+.item .texto {
+    max-width: 240px; 
+    overflow-wrap: break-word; 
+    word-break: break-word;
 }
 
 .concluido {
@@ -100,6 +108,7 @@ input:focus {
     padding-right: 5px;
     display: flex;
     gap: 5px;
+    margin-left: 10px;
 }
 
 .item .excluirItem {
