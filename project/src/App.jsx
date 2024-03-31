@@ -33,7 +33,7 @@ function App() {
       <a className="link" href="http://itseriqq.github.io/portfolio" rel="noreferrer" target="_blank"><h2>Erick.dev</h2></a>
       <div>
       <Row>
-      <Col xs={8} md={8} lg={4}>
+      <Col xs={4} md={4} lg={4}>
       <input type="text" placeholder="Qual sua tarefa?" value={inputText} onChange={(e) => setInputText(e.target.value)}/>
       </Col>
       <Col xs={4} md={4} lg={4}>
