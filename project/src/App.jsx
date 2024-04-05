@@ -146,7 +146,10 @@ function App() {
                       <li className={`${item.completed ? 'concluido' : ''}`} key={item.id}>
 
                         <div className="categoria">
+                          <div className="texto">
+
                           {item.category}
+                          </div>
                         </div>
 
                         <div className="item">
