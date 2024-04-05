@@ -22,6 +22,7 @@ body {
 .forms {
     background-color: #12343b;
     border-radius: 8px;
+    width: 40vw;
 }
 
 input, .tarefa {
@@ -47,6 +48,10 @@ input:focus {
     overflow: hidden;
     color: white;
     outline: none;
+}
+
+.categoriainput, .tarefainput {
+    padding-left: 10px;
 }
 
 .botaoAdicionarItem {
@@ -185,6 +190,14 @@ h1 {
     margin-bottom: 10px;
 }
 
+.categoria {
+    font-size: 14px;
+    color: rgb(170, 170, 170);
+    height: 10px;
+    text-transform: uppercase;
+    padding-left: 3px;
+}
+
 
 @media (max-width: 300px) {
     input{
@@ -198,4 +211,12 @@ h1 {
     white-space: normal;
     line-height: 1.2; /* Ajustando a altura da linha */
   }
+}
+
+@media (max-width: 600px) {
+    .forms {
+        background-color: #12343b;
+        border-radius: 8px;
+        width: 90vw;
+    }
 }

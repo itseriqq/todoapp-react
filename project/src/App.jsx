@@ -10,10 +10,11 @@ import { BiCheck } from 'react-icons/bi';
 
 
 function App() {
-  const [itemList, setItemList] = useState( JSON.parse(localStorage.getItem("itemList")) || []);
+  const [itemList, setItemList] = useState(JSON.parse(localStorage.getItem("itemList")) || []);
   const [inputText, setInputText] = useState("");
   const [editedItem, setEditedItem] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [itemCategory, setCategoryItem] = useState("");
 
   function handleAdicionaItem() {
     const textoSemEspacos = inputText.trim()
@@ -23,11 +24,14 @@ function App() {
       id: uuidv4(),
       itemList: textoSemEspacos,
       title: inputText,
-      completed: false
+      completed: false,
+      category: itemCategory
     };
 
     setItemList([...itemList, newItem]);
     setInputText("");
+    setCategoryItem("");
+
     localStorage.setItem("itemList", JSON.stringify([...itemList, newItem]));
   }
 
@@ -52,14 +56,22 @@ function App() {
 
   const handleUpdateItem = () => {
     const updatedList = itemList.map((item) =>
-      item.id === editedItem.id ? { ...item, itemList: editedItem.itemList } : item
+      item.id === editedItem.id
+        ? {
+            ...item,
+            itemList: editedItem.itemList,
+            category: editedItem.category,
+          }
+        : item
     );
     setItemList(updatedList);
     setIsEditing(false);
     setInputText("");
+    setCategoryItem("");
     setEditedItem(null);
     localStorage.setItem("itemList", JSON.stringify(updatedList));
   };
+
 
   return (
     <Container>
@@ -74,25 +86,54 @@ function App() {
           </Col>
         </Row>
 
-        <Row >
-          <Col xs={6} sm={8} md={8} lg={8} className="ps-4 pe-0">
-            <div className="w-100">
-              <input className="w-100 tarefa" type="text" placeholder="Qual sua tarefa?" value={isEditing ? editedItem.itemList : inputText}
+        <Row className="mb-3">
+          <Col xs={12} sm={12} md={12} lg={12}>
+            <div className="w-100 tarefainput pe-3">
+              <input
+                className="w-100 tarefa"
+                type="text"
+                placeholder="Qual sua tarefa?"
+                value={isEditing ? editedItem.itemList : inputText}
                 onChange={(e) => {
                   if (isEditing) {
                     setEditedItem({ ...editedItem, itemList: e.target.value });
                   } else {
                     setInputText(e.target.value);
                   }
-                }} />
+                }}
+              />
             </div>
           </Col>
-          <Col xs={6} sm={4} md={4} lg={4}>
-            <div className="pe-0 pe-4">
+        </Row>
+
+        <Row className="mb-3">
+          <Col xs={12} sm={12} md={12} lg={12}>
+            <div className="categoriainput w-100 pe-3">
+              <input
+                className="w-100 tarefa"
+                type="text"
+                placeholder="Qual categoria?"
+                value={isEditing ? editedItem.category : itemCategory}
+                onChange={(e) => {
+                  if (isEditing) {
+                    setEditedItem({ ...editedItem, category: e.target.value });
+                  } else {
+                    setCategoryItem(e.target.value);
+                  }
+                }}
+              />
+            </div>
+          </Col>
+        </Row>
+
+        <Row >
+          <Col xs={12} sm={12} md={12} lg={12}>
+            <div className="pe-4">
               <button className="botaoAdicionarItem" onClick={isEditing ? handleUpdateItem : handleAdicionaItem}>{isEditing ? "Ok" : "Add"}</button>
             </div>
           </Col>
         </Row>
+
 
         <Row>
           <Col xs={12}>
@@ -101,26 +142,33 @@ function App() {
                 {itemList.map((item) => (
                   <Row>
                     <Col xs={12} className="pe-4 ps-4">
-                      
-                      
-                      <li className={`item ${item.completed ? 'concluido' : ''}`} key={item.id}>
-                        <div className="texto">
-                        {item.itemList}
-                        </div>
-                        
-                        <div className="botoesTask">
-                          <button className="concluirItem" onClick={() => handleConcluirItem(item.id)}>
-                            <BiCheck />
-                          </button>
 
-                          <button className="editarItem" onClick={() => handleEditarItem(item)}>
-                            <BiPencil />
-                          </button>
+                      <li className={`${item.completed ? 'concluido' : ''}`} key={item.id}>
 
-                          <button className="excluirItem" onClick={() => handleExcluirItem(item)}>
-                            <BiX />
-                          </button>
+                        <div className="categoria">
+                          {item.category}
                         </div>
+
+                        <div className="item">
+                          <div className="texto">
+                            {item.itemList}
+                          </div>
+
+                          <div className="botoesTask">
+                            <button className="concluirItem" onClick={() => handleConcluirItem(item.id)}>
+                              <BiCheck />
+                            </button>
+
+                            <button className="editarItem" onClick={() => handleEditarItem(item)}>
+                              <BiPencil />
+                            </button>
+
+                            <button className="excluirItem" onClick={() => handleExcluirItem(item)}>
+                              <BiX />
+                            </button>
+                          </div>
+                        </div>
+
                       </li>
                     </Col>
                   </Row>
