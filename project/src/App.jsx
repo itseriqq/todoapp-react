@@ -58,10 +58,10 @@ function App() {
     const updatedList = itemList.map((item) =>
       item.id === editedItem.id
         ? {
-            ...item,
-            itemList: editedItem.itemList,
-            category: editedItem.category,
-          }
+          ...item,
+          itemList: editedItem.itemList,
+          category: editedItem.category,
+        }
         : item
     );
     setItemList(updatedList);
@@ -145,32 +145,31 @@ function App() {
 
                       <li className={`${item.completed ? 'concluido' : ''}`} key={item.id}>
 
-                        <div className="categoria">
-                          <div className="texto">
-
-                          {item.category}
-                          </div>
-                        </div>
-
-                        <div className="item">
-                          <div className="texto">
-                            {item.itemList}
+                          <div className="categoria">
+                            <div className="texto">
+                              {item.category}
+                            </div>
                           </div>
 
-                          <div className="botoesTask">
-                            <button className="concluirItem" onClick={() => handleConcluirItem(item.id)}>
-                              <BiCheck />
-                            </button>
+                          <div className="item">
+                            <div className="texto">
+                              {item.itemList}
+                            </div>
 
-                            <button className="editarItem" onClick={() => handleEditarItem(item)}>
-                              <BiPencil />
-                            </button>
+                            <div className="botoesTask">
+                              <button className="concluirItem" onClick={() => handleConcluirItem(item.id)}>
+                                <BiCheck />
+                              </button>
 
-                            <button className="excluirItem" onClick={() => handleExcluirItem(item)}>
-                              <BiX />
-                            </button>
+                              <button className="editarItem" onClick={() => handleEditarItem(item)}>
+                                <BiPencil />
+                              </button>
+
+                              <button className="excluirItem" onClick={() => handleExcluirItem(item)}>
+                                <BiX />
+                              </button>
+                            </div>
                           </div>
-                        </div>
 
                       </li>
                     </Col>

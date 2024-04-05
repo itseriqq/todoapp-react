@@ -91,7 +91,7 @@ input:focus {
     border-radius: 0px 10px 10px 10px;
     border: 0.3px solid #000;
     display: flex;
-    margin-top: 10px;
+    margin-top: 5px;
     padding-right: 10px;
     justify-content: space-between;
     line-height: auto;
@@ -191,12 +191,23 @@ h1 {
 }
 
 .categoria {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    justify-content: space-between;
     font-size: 14px;
     color: rgb(170, 170, 170);
-    height: 10px;
     text-transform: uppercase;
     padding-left: 3px;
-    margin-top: 5px;
+    margin-top: 10px;
+}
+
+
+.categoria .texto {
+    max-width: 100%; 
+    overflow-wrap: break-word; 
+    word-break: break-word;
 }
 
 
