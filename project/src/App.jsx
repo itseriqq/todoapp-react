@@ -66,9 +66,9 @@ function App() {
       item.id === editedItem.id
         ? {
           ...item,
-          itemList: inputText,
-          category: itemCategory,
-          color: categoryColor,
+          itemList: editedItem.itemList,
+          category: editedItem.category,
+          color: editedItem.color,
         }
         : item
     );
@@ -105,7 +105,7 @@ function App() {
                 value={isEditing ? editedItem.itemList : inputText}
                 onChange={(e) => {
                   if (isEditing) {
-                    setEditedItem({ ...editedItem, itemList: e.target.value });
+                    setEditedItem(prev => ({ ...prev, itemList: e.target.value }));
                   } else {
                     setInputText(e.target.value);
                   }
@@ -116,16 +116,17 @@ function App() {
         </Row>
 
         <Row className="mb-3">
-          <Col xs={10} sm={10} md={10} lg={10}>
+          <Col xs={8} sm={8} md={9} lg={10}>
             <div className="categoriainput w-100 pe-3">
               <input
                 className="w-100 tarefa"
                 type="text"
                 placeholder="Qual categoria?"
                 value={isEditing ? editedItem.category : itemCategory}
+
                 onChange={(e) => {
                   if (isEditing) {
-                    setEditedItem({ ...editedItem, category: e.target.value });
+                    setEditedItem(prev => ({ ...prev, category: e.target.value }));
                   } else {
                     setCategoryItem(e.target.value);
                   }
@@ -133,12 +134,13 @@ function App() {
               />
             </div>
           </Col>
-          <Col>
-            <input type="color" className="form-control form-control-color" id="exampleColorInput" value="#000" 
-          
+          <Col xs={4} sm={4} md={3} lg={2}>
+            <input type="color" className="form-control form-control-color" id="exampleColorInput" 
+            value={isEditing ? editedItem.color : categoryColor}
+
             onChange={(e) => {
               if (isEditing) {
-                setEditedItem({ ...editedItem, color: e.target.value});
+                setEditedItem(prev => ({ ...prev, color: e.target.value }));
               } else {
                 setCategoryColor(e.target.value);
               }
@@ -151,7 +153,7 @@ function App() {
         <Row >
           <Col xs={12} sm={12} md={12} lg={12}>
             <div className="pe-4">
-              <button className="botaoAdicionarItem" onClick={isEditing ? handleUpdateItem : handleAdicionaItem}>{isEditing ? "Ok" : "Add"}</button>
+              <button className="botaoAdicionarItem" onClick={isEditing ? handleUpdateItem : handleAdicionaItem}>{isEditing ? "OK" : "ADD"}</button>
             </div>
           </Col>
         </Row>
@@ -174,7 +176,7 @@ function App() {
                         </div>
 
                         <div className="item">
-                          <div className="texto">:
+                          <div className="texto">
                             {item.itemList}
                           </div>
 
