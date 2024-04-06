@@ -169,13 +169,13 @@ function App() {
 
                       <li className={`${item.completed ? 'concluido' : ''}`} key={item.id}>
 
-                        <div className="categoria" style={{backgroundColor: item.color ? item.color : "#e5fec5", }}>
-                          <div className="texto" style={{color: item.color ? "white" : "black"}}>
+                        <div className="categoria" style={{display: item.category ? '' : 'none', backgroundColor: item.color ? item.color : "#e5fec5", }}>
+                          <div className="texto" style={{color: item.color ? "white" : "black",}}>
                             {item.category}
                           </div>
                         </div>
 
-                        <div className="item">
+                        <div className="item" style={{marginTop: item.category ? "3px" : "3px"}}>
                           <div className="texto">
                             {item.itemList}
                           </div>
