@@ -37,8 +37,9 @@ input, .tarefa {
 }
 
 input::placeholder{
+    text-align: center;
     padding: 5px;
-    font-size: 14px;
+    font-size: 15px;
     color: #ffffffab;
 }
 
@@ -91,10 +92,18 @@ input:focus {
     border-radius: 0px 10px 10px 10px;
     border: 0.3px solid #000;
     display: flex;
-    margin-top: 5px;
     padding-right: 10px;
     justify-content: space-between;
     line-height: auto;
+}
+
+.form-control-color {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 3px;
 }
 
 .item .texto {
@@ -195,12 +204,20 @@ h1 {
     align-items: center;
     justify-content: center;
     display: flex;
-    justify-content: space-between;
     font-size: 14px;
     color: rgb(170, 170, 170);
     text-transform: uppercase;
-    padding-left: 3px;
+    padding-left: -3px;
+    padding-top: 3px;
     margin-top: 10px;
+    margin-left: 0px;
+    margin-bottom: -2px;
+    border: 1px solid #000;
+    border-bottom: none;
+    border-radius: 10px 10px 0px 0px;
+    width: 40%;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 
@@ -208,19 +225,20 @@ h1 {
     max-width: 100%; 
     overflow-wrap: break-word; 
     word-break: break-word;
+    color: white;
 }
 
 
 @media (max-width: 300px) {
-    input{
+    .tarefainput input, .categoriainput input{
        padding-bottom: 15px;
        padding-left: 0 !important;
        text-align: center;
     }
-    input::placeholder {
+    .tarefainput input::placeholder, .categoriainput input::placeholder {
     /* Definindo quebra de texto */
     font-size: 12px;
-    white-space: normal;
+    white-space: normal;    
     line-height: 1.2; /* Ajustando a altura da linha */
   }
 }
@@ -230,5 +248,31 @@ h1 {
         background-color: #12343b;
         border-radius: 8px;
         width: 90vw;
+    }
+    .categoria {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        font-size: 14px;
+        color: rgb(170, 170, 170);
+        text-transform: uppercase;
+        padding-left: -3px;
+        padding-top: 3px;
+        margin-top: 10px;
+        margin-left: 0px;
+        margin-bottom: -2px;
+        border: 1px solid #000;
+        border-bottom: none;
+        border-radius: 10px 10px 0px 0px;
+        width: 30%;
+    }
+    
+    
+    .categoria .texto {
+        max-width: 100%; 
+        overflow-wrap: break-word; 
+        word-break: break-word;
+        color: white;
     }
 }
