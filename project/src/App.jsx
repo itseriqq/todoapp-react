@@ -116,7 +116,7 @@ function App() {
         </Row>
 
         <Row className="mb-3">
-          <Col xs={10} sm={10} md={10} lg={10}>
+          <Col xs={8} sm={8} md={9} lg={10}>
             <div className="categoriainput w-100 pe-3">
               <input
                 className="w-100 tarefa"
@@ -134,7 +134,7 @@ function App() {
               />
             </div>
           </Col>
-          <Col>
+          <Col xs={4} sm={4} md={3} lg={2}>
             <input type="color" className="form-control form-control-color" id="exampleColorInput" 
             value={isEditing ? editedItem.color : categoryColor}
 
