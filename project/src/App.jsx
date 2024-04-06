@@ -3,6 +3,7 @@ import "./styles.css"
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+// import Form from 'react-bootstrap/Form';
 import { v4 as uuidv4 } from "uuid";
 import { BiX } from 'react-icons/bi';
 import { BiPencil } from 'react-icons/bi';
@@ -15,6 +16,7 @@ function App() {
   const [editedItem, setEditedItem] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [itemCategory, setCategoryItem] = useState("");
+  const [categoryColor, setCategoryColor] = useState("");
 
   function handleAdicionaItem() {
     const textoSemEspacos = inputText.trim()
@@ -25,11 +27,13 @@ function App() {
       itemList: textoSemEspacos,
       title: inputText,
       completed: false,
-      category: itemCategory
+      category: itemCategory,
+      color: categoryColor
     };
 
     setItemList([...itemList, newItem]);
     setInputText("");
+    setCategoryColor("");
     setCategoryItem("");
 
     localStorage.setItem("itemList", JSON.stringify([...itemList, newItem]));
@@ -52,6 +56,9 @@ function App() {
   const handleEditarItem = (item) => {
     setEditedItem(item);
     setIsEditing(true);
+    setInputText(item.itemList)
+    setCategoryItem(item.category);
+    setCategoryColor(item.color);
   };
 
   const handleUpdateItem = () => {
@@ -59,16 +66,18 @@ function App() {
       item.id === editedItem.id
         ? {
           ...item,
-          itemList: editedItem.itemList,
-          category: editedItem.category,
+          itemList: inputText,
+          category: itemCategory,
+          color: categoryColor,
         }
         : item
     );
     setItemList(updatedList);
     setIsEditing(false);
     setInputText("");
-    setCategoryItem("");
     setEditedItem(null);
+    setCategoryItem("")
+    setCategoryColor("");
     localStorage.setItem("itemList", JSON.stringify(updatedList));
   };
 
@@ -107,7 +116,7 @@ function App() {
         </Row>
 
         <Row className="mb-3">
-          <Col xs={12} sm={12} md={12} lg={12}>
+          <Col xs={10} sm={10} md={10} lg={10}>
             <div className="categoriainput w-100 pe-3">
               <input
                 className="w-100 tarefa"
@@ -123,6 +132,19 @@ function App() {
                 }}
               />
             </div>
+          </Col>
+          <Col>
+            <input type="color" className="form-control form-control-color" id="exampleColorInput" value="#000" 
+          
+            onChange={(e) => {
+              if (isEditing) {
+                setEditedItem({ ...editedItem, color: e.target.value});
+              } else {
+                setCategoryColor(e.target.value);
+              }
+            }}
+
+            title="Cor da categoria"></input>
           </Col>
         </Row>
 
@@ -145,31 +167,31 @@ function App() {
 
                       <li className={`${item.completed ? 'concluido' : ''}`} key={item.id}>
 
-                          <div className="categoria">
-                            <div className="texto">
-                              {item.category}
-                            </div>
+                        <div className="categoria" style={{backgroundColor: item.color ? item.color : "#e5fec5", }}>
+                          <div className="texto" style={{color: item.color ? "white" : "black"}}>
+                            {item.category}
+                          </div>
+                        </div>
+
+                        <div className="item">
+                          <div className="texto">:
+                            {item.itemList}
                           </div>
 
-                          <div className="item">
-                            <div className="texto">
-                              {item.itemList}
-                            </div>
+                          <div className="botoesTask">
+                            <button className="concluirItem" onClick={() => handleConcluirItem(item.id)}>
+                              <BiCheck />
+                            </button>
 
-                            <div className="botoesTask">
-                              <button className="concluirItem" onClick={() => handleConcluirItem(item.id)}>
-                                <BiCheck />
-                              </button>
+                            <button className="editarItem" onClick={() => handleEditarItem(item)}>
+                              <BiPencil />
+                            </button>
 
-                              <button className="editarItem" onClick={() => handleEditarItem(item)}>
-                                <BiPencil />
-                              </button>
-
-                              <button className="excluirItem" onClick={() => handleExcluirItem(item)}>
-                                <BiX />
-                              </button>
-                            </div>
+                            <button className="excluirItem" onClick={() => handleExcluirItem(item)}>
+                              <BiX />
+                            </button>
                           </div>
+                        </div>
 
                       </li>
                     </Col>
