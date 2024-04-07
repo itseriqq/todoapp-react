@@ -175,7 +175,7 @@ function App() {
                           </div>
                         </div>
 
-                        <div className="item" style={{marginTop: item.category ? "3px" : "3px"}}>
+                        <div className="item" style={{marginTop: item.category ? "3px" : "10px"}}>
                           <div className="texto">
                             {item.itemList}
                           </div>
