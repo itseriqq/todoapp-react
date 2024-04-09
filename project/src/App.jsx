@@ -28,7 +28,8 @@ function App() {
       title: inputText,
       completed: false,
       category: itemCategory,
-      color: categoryColor
+      color: categoryColor,
+      active: false,
     };
 
     setItemList([...itemList, newItem]);
@@ -39,13 +40,15 @@ function App() {
     localStorage.setItem("itemList", JSON.stringify([...itemList, newItem]));
   }
 
-  function handleExcluirItem(item) {
+  function handleExcluirItem(event, item) {
+    event.stopPropagation(); 
     const updatedList = itemList.filter((lista) => lista !== item);
     setItemList(updatedList);
     localStorage.setItem("itemList", JSON.stringify(updatedList));
   }
 
-  function handleConcluirItem(id) {
+  function handleConcluirItem(event, id) {
+    event.stopPropagation(); 
     const updatedList = itemList.map((item) =>
       item.id === id ? { ...item, completed: !item.completed } : item
     );
@@ -53,7 +56,8 @@ function App() {
     localStorage.setItem("itemList", JSON.stringify(updatedList));
   }
 
-  const handleEditarItem = (item) => {
+  function handleEditarItem(event, item) {
+    event.stopPropagation(); 
     setEditedItem(item);
     setIsEditing(true);
     setInputText(item.itemList)
@@ -81,61 +85,68 @@ function App() {
     localStorage.setItem("itemList", JSON.stringify(updatedList));
   };
 
+  function handleItemClick(item) {
+    const updatedListActive = itemList.map((i) =>
+      i.id === item.id ? { ...i, active: !i.active } : i);
+  setItemList(updatedListActive);
+  localStorage.setItem("itemList", JSON.stringify(updatedListActive));
+}
 
-  return (
-    <Container>
-      <div className="forms">
 
-        <Row>
-          <Col xs={12}>
-            <div className="d-flex justify-content center align-items-center flex-column">
-              <h1 className="mt-4">To-do App</h1>
-              <a className="link" href="http://itseriqq.github.io/portfolio" rel="noreferrer" target="_blank"><h2>Erick.dev</h2></a>
-            </div>
-          </Col>
-        </Row>
+return (
+  <Container>
+    <div className="forms">
 
-        <Row className="mb-3">
-          <Col xs={12} sm={12} md={12} lg={12}>
-            <div className="w-100 tarefainput pe-3">
-              <input
-                className="w-100 tarefa"
-                type="text"
-                placeholder="Qual sua tarefa?"
-                value={isEditing ? editedItem.itemList : inputText}
-                onChange={(e) => {
-                  if (isEditing) {
-                    setEditedItem(prev => ({ ...prev, itemList: e.target.value }));
-                  } else {
-                    setInputText(e.target.value);
-                  }
-                }}
-              />
-            </div>
-          </Col>
-        </Row>
+      <Row>
+        <Col xs={12}>
+          <div className="d-flex justify-content center align-items-center flex-column">
+            <h1 className="mt-4">To-do App</h1>
+            <a className="link" href="http://itseriqq.github.io/portfolio" rel="noreferrer" target="_blank"><h2>Erick.dev</h2></a>
+          </div>
+        </Col>
+      </Row>
 
-        <Row className="mb-3">
-          <Col xs={8} sm={8} md={9} lg={10}>
-            <div className="categoriainput w-100 pe-3">
-              <input
-                className="w-100 tarefa"
-                type="text"
-                placeholder="Qual categoria?"
-                value={isEditing ? editedItem.category : itemCategory}
+      <Row className="mb-3">
+        <Col xs={12} sm={12} md={12} lg={12}>
+          <div className="w-100 tarefainput pe-3">
+            <input
+              className="w-100 tarefa"
+              type="text"
+              placeholder="Qual sua tarefa?"
+              value={isEditing ? editedItem.itemList : inputText}
+              onChange={(e) => {
+                if (isEditing) {
+                  setEditedItem(prev => ({ ...prev, itemList: e.target.value }));
+                } else {
+                  setInputText(e.target.value);
+                }
+              }}
+            />
+          </div>
+        </Col>
+      </Row>
 
-                onChange={(e) => {
-                  if (isEditing) {
-                    setEditedItem(prev => ({ ...prev, category: e.target.value }));
-                  } else {
-                    setCategoryItem(e.target.value);
-                  }
-                }}
-              />
-            </div>
-          </Col>
-          <Col xs={4} sm={4} md={3} lg={2}>
-            <input type="color" className="form-control form-control-color" id="exampleColorInput" 
+      <Row className="mb-3">
+        <Col xs={8} sm={8} md={9} lg={10}>
+          <div className="categoriainput w-100 pe-3">
+            <input
+              className="w-100 tarefa"
+              type="text"
+              placeholder="Qual categoria?"
+              value={isEditing ? editedItem.category : itemCategory}
+
+              onChange={(e) => {
+                if (isEditing) {
+                  setEditedItem(prev => ({ ...prev, category: e.target.value }));
+                } else {
+                  setCategoryItem(e.target.value);
+                }
+              }}
+            />
+          </div>
+        </Col>
+        <Col xs={4} sm={4} md={3} lg={2}>
+          <input type="color" className="form-control form-control-color" id="exampleColorInput"
             value={isEditing ? editedItem.color : categoryColor}
 
             onChange={(e) => {
@@ -147,67 +158,67 @@ function App() {
             }}
 
             title="Cor da categoria"></input>
-          </Col>
-        </Row>
+        </Col>
+      </Row>
 
-        <Row >
-          <Col xs={12} sm={12} md={12} lg={12}>
-            <div className="pe-4">
-              <button className="botaoAdicionarItem" onClick={isEditing ? handleUpdateItem : handleAdicionaItem}>{isEditing ? "OK" : "ADD"}</button>
-            </div>
-          </Col>
-        </Row>
+      <Row >
+        <Col xs={12} sm={12} md={12} lg={12}>
+          <div className="pe-4">
+            <button className="botaoAdicionarItem" onClick={isEditing ? handleUpdateItem : handleAdicionaItem}>{isEditing ? "OK" : "ADD"}</button>
+          </div>
+        </Col>
+      </Row>
 
 
-        <Row>
-          <Col xs={12}>
-            <div className="w-100">
-              <ul className="lista">
-                {itemList.map((item) => (
-                  <Row>
-                    <Col xs={12} className="pe-4 ps-4">
+      <Row>
+        <Col xs={12}>
+          <div className="w-100">
+            <ul className="lista">
+              {itemList.map((item) => (
+                <Row>
+                  <Col xs={12} className="pe-4 ps-4">
 
-                      <li className={`${item.completed ? 'concluido' : ''}`} key={item.id}>
+                    <li className={`${item.completed ? 'concluido' : ''}`} key={item.id} onClick={() => handleItemClick(item)}>
 
-                        <div className="categoria" style={{display: item.category ? '' : 'none', backgroundColor: item.color ? item.color : "#e5fec5", }}>
-                          <div className="texto" style={{color: item.color ? "white" : "black",}}>
-                            {item.category}
-                          </div>
+                      <div className="categoria" style={{ display: item.category ? '' : 'none', backgroundColor: item.color ? item.color : "#e5fec5", }}>
+                        <div className="texto" style={{ color: item.color ? "white" : "black", }}>
+                          {item.category}
+                        </div>
+                      </div>
+
+                      <div className="item" style={{ marginTop: item.category ? "3px" : "10px" }}>
+                        <div className="texto">
+                          {item.itemList}
                         </div>
 
-                        <div className="item" style={{marginTop: item.category ? "3px" : "10px"}}>
-                          <div className="texto">
-                            {item.itemList}
-                          </div>
+                        <div className="botoesTask" style={{ display: item.active ? "" : "none" }}>
+                          <button className="concluirItem" onClick={(event) => handleConcluirItem(event, item.id)}>
+                            <BiCheck />
+                          </button>
 
-                          <div className="botoesTask">
-                            <button className="concluirItem" onClick={() => handleConcluirItem(item.id)}>
-                              <BiCheck />
-                            </button>
+                          <button className="editarItem" onClick={(event) => handleEditarItem(event, item)}>
+                            <BiPencil />
+                          </button>
 
-                            <button className="editarItem" onClick={() => handleEditarItem(item)}>
-                              <BiPencil />
-                            </button>
-
-                            <button className="excluirItem" onClick={() => handleExcluirItem(item)}>
-                              <BiX />
-                            </button>
-                          </div>
+                          <button className="excluirItem" onClick={(event) => handleExcluirItem(event, item)}>
+                            <BiX />
+                          </button>
                         </div>
+                      </div>
 
-                      </li>
-                    </Col>
-                  </Row>
-                ))}
-              </ul>
-            </div>
+                    </li>
+                  </Col>
+                </Row>
+              ))}
+            </ul>
+          </div>
 
-          </Col>
-        </Row>
+        </Col>
+      </Row>
 
-      </div>
-    </Container>
-  );
+    </div>
+  </Container>
+);
 }
 
 export default App;
